@@ -1,0 +1,19 @@
+.http-s-positive {
+	color: #60ac65;
+}
+
+.http-s-negative {
+	color: #f64f31;
+}
+
+#clickeable-tr{
+	cursor: pointer;
+}
+
+#clickeable-tr:hover{
+	background-color: #f6f6f6;
+}
+
+span {
+	font-weight: bold;
+}

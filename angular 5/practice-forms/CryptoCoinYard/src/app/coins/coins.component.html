@@ -1,0 +1,90 @@
+<div class="container text-center">
+		<div *ngIf="loading">
+			  <div class="ui active centered inline loader"></div>
+		</div>
+			  
+		<!-- <button class="ui primary button" type="button" (click)="makeRequest()">Make Request</button> -->
+		<br/>
+		<div class="centered row">
+			<div *ngIf=coins>
+				<table class="table">
+				  <thead>
+				    <tr>
+					    <th class="single line">Symbol</th>
+					    <th>Name</th>
+					    <th>Rank</th>
+					    <th>Price USD</th>
+					    <th>Price BTC</th>
+					    <th>Volume (24h)</th>
+					    <th>Mrkt Cap</th>
+					    <th>Change (1h)</th>
+					    <th>Change (24h)</th>
+					    <th>Change (7d)</th>
+
+				   </tr>
+				  </thead>
+				  <tbody>
+				    <tr *ngFor="let coin of coins" (click)="coinDetail(coin.id)" id="clickeable-tr">
+				      <th scope="row">
+				        {{ coin.symbol }}
+				      </th>
+				      <td>
+				        {{ coin.name }}
+				      </td>
+				      <td>
+				        {{ coin.rank }}
+				      </td>
+				      <td>
+				        {{ coin.price_usd | currency}}
+				      </td>
+				      <td>
+				      	{{ coin.price_btc  }}
+				      </td>
+				      <td>
+				      	{{ coin['24h_volume_usd'] | currency}}
+				      </td>
+				      <td>
+				      	{{ coin.market_cap_usd | currency}}
+				      </td>
+				       <td [ngSwitch]="coin['percent_change_1h'] > 0">
+			       		<div *ngSwitchCase="true">
+				       		<span class="http-s-positive">
+				       			{{ coin['percent_change_1h']}}%
+				       		</span>
+				       	</div>
+				       	<div *ngSwitchCase="false">
+			       			<span class="http-s-negative">
+				       			{{ coin['percent_change_1h']}}%
+			       			</span>
+				       	</div>
+				      </td>
+				      <td [ngSwitch]="coin['percent_change_24h'] > 0">
+			       		<div *ngSwitchCase="true">
+				       		<span class="http-s-positive">
+				       			{{ coin['percent_change_24h']}}%
+				       		</span>
+				       	</div>
+				       	<div *ngSwitchCase="false">
+			       			<span class="http-s-negative">
+				       			{{ coin['percent_change_24h']}}%
+			       			</span>
+				       	</div>
+				      </td>
+				      <td [ngSwitch]="coin['percent_change_7d'] > 0">
+			       		<div *ngSwitchCase="true">
+				       		<span class="http-s-positive">
+				       			{{ coin['percent_change_7d']}}%
+				       		</span>
+				       	</div>
+				       	<div *ngSwitchCase="false">
+			       			<span class="http-s-negative">
+				       			{{ coin['percent_change_7d']}}%
+			       			</span>
+				       	</div>
+				      </td>
+				    </tr>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+	</div>

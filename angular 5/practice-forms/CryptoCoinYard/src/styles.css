@@ -1,0 +1,10 @@
+.http-s-positive {
+	color: #60ac65;
+}
+
+.http-s-negative {
+	color: #f64f31;
+}
+.inline-element{
+	display: inline;
+}

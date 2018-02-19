@@ -1,0 +1,60 @@
+<div class="card" style="padding: 0.35em" *ngIf="coin">
+	<div class="text-center"  *ngIf="loading">
+		<img src='assets/images/loading.gif'/>
+	</div>
+	<ul class="list-group list-group-flush">
+		<li class="list-group-item">
+			<div class="card-block">
+				<div class="row">
+					<div class="col-4" >
+							<img src="" class="inline-element">
+							<h2 class="inline-element">{{coin.name}}</h2>
+							<h5 class="card-subtitle mb-2 text-muted inline-element">({{ coin.symbol }})</h5>
+					</div>				
+					<div class="col-8 inline-element">
+							<h4 class="inline-element">{{coin.price_usd | currency}}</h4><span class="inline-element"> USD</span>
+							<h5 class="inline-element http-s-positive" *ngIf="coin['percent_change_1h'] > 0">
+			     			({{ coin['percent_change_1h']}}%)
+			     		</h5>
+			     		<h5 class="inline-element http-s-positive" *ngIf="coin['percent_change_1h'] < 0">
+			     			({{ coin['percent_change_1h']}}%)
+			     		</h5>
+							<h6 class="text-muted">
+								{{ coin.price_btc }} BTC
+						</h6>
+
+					 <div class="row" style="margin-top: 1em">
+					 	 <div class="table">
+					 	 	<thead>
+					 	 		<tr>
+						 	 		<th>Market Cap</th>
+						 	 		<th>Volume (24) </th>
+						 	 		<th>Circulating Supply</th>
+					 	 		</tr>
+					 	 	</thead>
+					 	 	<tbody>
+					 	 		<tr>
+					 	 			<td> {{ coin.market_cap_usd | currency}} </td>
+					 	 			<td> {{ coin['24h_volume_usd'] | currency}} </td>
+					 	 			<td> {{ coin.total_supply | currency}} </td>
+					 	 		</tr>
+					 	 	</tbody>
+					 	 </div>
+					 </div>
+					</div>
+
+
+<!-- 
+					<div class="col-sm">
+						
+					</div> -->
+				</div>
+			</div>
+		</li>
+		<li class="list-group-item">
+			GRAPH
+		</li>
+
+	</ul>
+
+</div>
