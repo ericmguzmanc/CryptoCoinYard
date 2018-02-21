@@ -7,6 +7,7 @@ import {
 
 import { CoinsService } from '../services/coins.service';
 import { CoinsModel } from '../shared/coins.model';
+import { CoinsGlobalData } from '../shared/coinsGlobalData.model';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
 
@@ -18,7 +19,9 @@ import { Router } from '@angular/router';
 export class CoinsComponent implements OnInit {
 	loading: boolean;
 	coins: CoinsModel[];
-
+	offset: number = 0;
+	limit: number = 20;
+    active_currencies: number;
 	/*
 	 * @Output onCoinSelected - outputs the current coin
 	 *          whenever a coin is selected
@@ -29,12 +32,23 @@ export class CoinsComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		this.getCoins();
+		this.coinGlobalData();
 	}
 
-	getCoins(): void {
+	coinGlobalData(): void {
+		this.coinsService.getCoinsGlobalData()
+		.subscribe(
+			(res: CoinsGlobalData) => { 
+				this.active_currencies = res.active_currencies 
+				this.getCoins(this.offset, this.limit);
+			}
+		);
+	}
+
+	getCoins(offset: number, limit: number): void {
 		this.loading = true;
-		this.coinsService.getCoins()
+		// this.coins = [];
+		this.coinsService.getCoins(offset, limit)
 		.subscribe((res: CoinsModel[]) => this.renderCoinsData(res)); 
 	}
 
@@ -49,6 +63,9 @@ export class CoinsComponent implements OnInit {
 		}
 	}
 
-
+	onPageChange(offset) {
+		this.offset = offset;
+		this.getCoins(offset, this.limit);
+	}
 
 }

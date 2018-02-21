@@ -1,18 +1,20 @@
+
+
+
 <div class="container text-center">
 		<div *ngIf="loading">
 			  <div class="ui active centered inline loader"></div>
 		</div>
 			  
-		<!-- <button class="ui primary button" type="button" (click)="makeRequest()">Make Request</button> -->
 		<br/>
 		<div class="centered row">
 			<div *ngIf=coins>
 				<table class="table">
 				  <thead>
 				    <tr>
-					    <th class="single line">Symbol</th>
-					    <th>Name</th>
 					    <th>Rank</th>
+					    <th>Symbol</th>
+					    <th>Name</th>
 					    <th>Price USD</th>
 					    <th>Price BTC</th>
 					    <th>Volume (24h)</th>
@@ -25,14 +27,14 @@
 				  </thead>
 				  <tbody>
 				    <tr *ngFor="let coin of coins" (click)="coinDetail(coin.id)" id="clickeable-tr">
-				      <th scope="row">
+							<td>
+								{{ coin.rank }}
+							</td>
+				      <th>
 				        {{ coin.symbol }}
 				      </th>
-				      <td>
+				      <td class="single line">
 				        {{ coin.name }}
-				      </td>
-				      <td>
-				        {{ coin.rank }}
 				      </td>
 				      <td>
 				        {{ coin.price_usd | currency}}
@@ -85,6 +87,11 @@
 				    </tr>
 				  </tbody>
 				</table>
+				<app-pagination [offset]="offset" [limit]="20" [size]="active_currencies" (pageChange)="onPageChange($event)"></app-pagination>
 			</div>
 		</div>
 	</div>
+	
+
+	
+

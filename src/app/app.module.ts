@@ -22,7 +22,7 @@ import { CoinsService } from './services/coins.service';
 import { CoinsComponent } from './coins/coins.component';
 import { CoinDetailComponent } from './coin-detail/coin-detail.component';
 import { AppComponent } from './app.component';
-import { PaginationComponent } from './pagination/pagination.component';
+import { PaginationComponent } from './shared/pagination/pagination.component';
 
 
 

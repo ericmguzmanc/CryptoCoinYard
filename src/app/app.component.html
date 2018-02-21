@@ -15,9 +15,6 @@
           <li class="nav-item active">
             <a class="nav-link" [routerLink]="['/coins']">Coins <span class="sr-only">(current)</span></a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/about']">About</a>
-          </li>  -->  
         </ul>
       </div>
     </nav>
@@ -27,5 +24,18 @@
 <div class="content">
   <div class="container" style="padding-top: 0.25em">
     <router-outlet></router-outlet>
+  </div>
+</div>
+<div id="footer">
+  <div class="container">
+    <div class="row">
+    <hr/>
+      <div class="col-8">
+        <a href="#">Terms of Service</a> | <a href="#">Privacy</a>    
+      </div>
+      <div class="col-4 text-center">
+        <p class="muted pull-right">© 2018 CryptoCoinYard</p>
+      </div>
+    </div>
   </div>
 </div>
