@@ -22,6 +22,7 @@ import { CoinsService } from './services/coins.service';
 import { CoinsComponent } from './coins/coins.component';
 import { CoinDetailComponent } from './coin-detail/coin-detail.component';
 import { AppComponent } from './app.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 
@@ -35,7 +36,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     CoinsComponent,
-    CoinDetailComponent
+    CoinDetailComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
