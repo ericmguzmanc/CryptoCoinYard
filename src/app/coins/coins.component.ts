@@ -45,7 +45,7 @@ export class CoinsComponent implements OnInit {
 
 	coinDetail(coin: CoinsModel): void {
 		if(coin){
-			this.router.navigateByUrl('/coins/detail/'+coin});//{queryParams: { coin: coin } });
+			this.router.navigateByUrl('/coins/detail/'+coin);//{queryParams: { coin: coin } });
 		}
 	}
 
