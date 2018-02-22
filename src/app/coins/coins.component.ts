@@ -10,6 +10,7 @@ import { CoinsModel } from '../shared/coins.model';
 import { CoinsGlobalData } from '../shared/coinsGlobalData.model';
 import { Http } from '@angular/http';
 import { Router } from '@angular/router';
+import { Configuration } from '../shared/coins.constants';
 
 @Component({
 	selector: 'coins',
@@ -17,6 +18,7 @@ import { Router } from '@angular/router';
 	styleUrls: ['./coins.component.css']
 })
 export class CoinsComponent implements OnInit {
+	imgBaseUrl: string;
 	loading: boolean;
 	coins: CoinsModel[];
 	offset: number = 0;
@@ -28,7 +30,9 @@ export class CoinsComponent implements OnInit {
 	 */
 	// @Output() onCoinSelected: EventEmitter<CoinsModel>;
 
-	constructor(private coinsService: CoinsService, private router: Router){
+	constructor(
+		private coinsService: CoinsService, 
+		private router: Router){
 	}
 
 	ngOnInit(): void {
@@ -66,6 +70,10 @@ export class CoinsComponent implements OnInit {
 	onPageChange(offset) {
 		this.offset = offset;
 		this.getCoins(offset, this.limit);
+	}
+
+	getCoinsImageUrl(coin: string): string {
+		return this.coinsService.getCoinsImageUrl(coin);
 	}
 
 }

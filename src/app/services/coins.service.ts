@@ -13,10 +13,12 @@ export class CoinsService {
 
 	apiUrl: string;
 	cccApiUrl: string;
+	imgBaseUrl: string;
 
 	constructor(private http: Http, private configuration: Configuration){
 		this.apiUrl = configuration.COINMARKETCAP_API_URL;
 		this.cccApiUrl = configuration.CRYPTOCOINCOMPARE_API_URL;
+		this.imgBaseUrl = configuration.IMG_BASE_URL;
 	}
 
 	//start=100&limit=10
@@ -30,14 +32,9 @@ export class CoinsService {
 		.map(res => res.json());
 	}
 
-	getCoinsImageUrl(offset: number = 0, limit: number = 0): Observable<any[]> {
-		const params: string = [
-			`a`,
-			`a`
-		].join('&');
-		const queryUrl = `${this.cccApiUrl}coin/?${params}`;
-		return this.http.get(queryUrl)
-		.map(res => res.json());
+	getCoinsImageUrl(coinSymbol: string): string {
+		coinSymbol = coinSymbol.toLocaleLowerCase();
+		return this.imgBaseUrl + coinSymbol + '.svg';
 	}
 
 	getCoinDetail(id: string): Observable<CoinsModel> {

@@ -13,8 +13,8 @@
 				  <thead>
 				    <tr>
 					    <th>Rank</th>
+					    <th class="text-left">Name</th>
 					    <th>Symbol</th>
-					    <th>Name</th>
 					    <th>Price USD</th>
 					    <th>Price BTC</th>
 					    <th>Volume (24h)</th>
@@ -30,11 +30,12 @@
 							<td>
 								{{ coin.rank }}
 							</td>
-				      <th>
+							<td class="single line text-left">
+								<img src="{{getCoinsImageUrl(coin.symbol)}}" alt="" >
+								{{ coin.name }}
+							</td>
+				      <td>								
 				        {{ coin.symbol }}
-				      </th>
-				      <td class="single line">
-				        {{ coin.name }}
 				      </td>
 				      <td>
 				        {{ coin.price_usd | currency}}

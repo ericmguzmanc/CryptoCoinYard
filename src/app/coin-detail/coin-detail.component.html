@@ -6,15 +6,15 @@
 		<li class="list-group-item">
 			<div class="card-block">
 				<div class="row">
-					<div class="col-4" >
-							<img src="" class="inline-element">
-							<h2 class="inline-element">{{coin.name}}</h2>
-							<h5 class="card-subtitle mb-2 text-muted inline-element">({{ coin.symbol }})</h5>
+					<div class="col-4 inline-element" >
+						<img src="{{getCoinsImageUrl(coin.symbol)}}" class="coin-detail-img">
+						<h2 class="inline-element coin-detail-name">{{coin.name}}</h2>
+						<h5 class="card-subtitle mb-2 text-muted inline-element">({{ coin.symbol }})</h5>
 					</div>				
 					<div class="col-8 inline-element">
-							<h4 class="inline-element">{{coin.price_usd | currency}}</h4><span class="inline-element"> USD</span>
+						<h4 class="inline-element">{{coin.price_usd | currency}}</h4><span class="inline-element"> USD</span>
 							<h5 class="inline-element http-s-positive" *ngIf="coin['percent_change_1h'] > 0">
-			     			({{ coin['percent_change_1h']}}%)
+							({{ coin['percent_change_1h']}}%)
 			     		</h5>
 			     		<h5 class="inline-element http-s-positive" *ngIf="coin['percent_change_1h'] < 0">
 			     			({{ coin['percent_change_1h']}}%)
