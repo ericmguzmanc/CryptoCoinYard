@@ -1,6 +1,6 @@
 # CryptoCoinYard
 
-CryptoCoinYard is a web application that allows you to consult real market information of cryptocurrencies.
+CryptoCoinYard is a web application that allows you to consult real market information about cryptocurrencies.
 
 ## Project Info
 
