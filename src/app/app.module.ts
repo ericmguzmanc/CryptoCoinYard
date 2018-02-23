@@ -23,13 +23,26 @@ import { CoinsComponent } from './coins/coins.component';
 import { CoinDetailComponent } from './coin-detail/coin-detail.component';
 import { AppComponent } from './app.component';
 import { PaginationComponent } from './shared/pagination/pagination.component';
-
+import { CoinDetailTabsComponent } from './coin-detail/coin-detail-tabs/coin-detail-tabs.component';
+import { CoinDetailChartComponent } from './coin-detail/coin-detail-tabs/coin-detail-chart/coin-detail-chart.component';
+import { CoinDetailExchangesComponent } from './coin-detail/coin-detail-tabs/coin-detail-exchanges/coin-detail-exchanges.component';
+import { CoinDetailHistoryComponent } from './coin-detail/coin-detail-tabs/coin-detail-history/coin-detail-history.component';
 
 
 const routes: Routes = [
 	{path: '', redirectTo: 'coins', pathMatch: 'full'},
 	{path: 'coins', component: CoinsComponent},
-	{path: 'coins/detail/:coin', component: CoinDetailComponent}
+  {
+    path: 'coins/detail/:coin',
+    component: CoinDetailComponent,
+    // children: [
+    //   {path: '', redirectTo: 'charts', pathMatch: 'full'},
+    //   {path: 'charts', component: CoinDetailComponent},
+    //   {path: 'exchanges', component: CoinDetailComponent},
+    //   {path: 'history', component: CoinDetailComponent}
+    // ]
+  }
+  
 ];
 
 @NgModule({
@@ -37,7 +50,11 @@ const routes: Routes = [
     AppComponent,
     CoinsComponent,
     CoinDetailComponent,
-    PaginationComponent
+    PaginationComponent,
+    CoinDetailTabsComponent,
+    CoinDetailChartComponent,
+    CoinDetailExchangesComponent,
+    CoinDetailHistoryComponent
   ],
   imports: [
     BrowserModule,

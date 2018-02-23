@@ -37,6 +37,7 @@ export class CoinsComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.coinGlobalData();
+		this.coinsService.setTitle('CryptoCoinYard', null);
 	}
 
 	coinGlobalData(): void {

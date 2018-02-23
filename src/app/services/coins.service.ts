@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import { CoinsModel } from '../shared/coins.model';
 import { CoinsGlobalData } from '../shared/coinsGlobalData.model';
 import { Configuration } from '../shared/coins.constants';
+import { Title } from '@angular/platform-browser';
 
 
 @Injectable()
@@ -15,7 +16,11 @@ export class CoinsService {
 	cccApiUrl: string;
 	imgBaseUrl: string;
 
-	constructor(private http: Http, private configuration: Configuration){
+	constructor(
+			private http: Http,
+			private configuration: Configuration,
+			private titleService: Title){
+
 		this.apiUrl = configuration.COINMARKETCAP_API_URL;
 		this.cccApiUrl = configuration.CRYPTOCOINCOMPARE_API_URL;
 		this.imgBaseUrl = configuration.IMG_BASE_URL;
@@ -48,6 +53,11 @@ export class CoinsService {
 		const queryUrl = `${this.apiUrl}global/`;
 		return this.http.get(queryUrl)
 		.map(res => res.json());
+	}
+
+	setTitle(newTitle: string, priceUSD): void {
+		newTitle = (priceUSD) ? newTitle + ' (BTC) $' + priceUSD : newTitle;
+		this.titleService.setTitle(newTitle);
 	}
 
 }

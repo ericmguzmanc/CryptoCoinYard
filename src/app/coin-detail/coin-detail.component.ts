@@ -21,6 +21,7 @@ export class CoinDetailComponent implements OnInit {
 	coin: CoinsModel;	
 	loading: boolean;
 	imgBaseUrl: string;
+	imgUrl: string;
 
 	constructor(private coinsService: CoinsService,
 				private router: Router,
@@ -32,6 +33,7 @@ export class CoinDetailComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		console.log(this.coinId);
 		this.getCoinData();
 		this.loading = true;
 	}
@@ -46,6 +48,7 @@ export class CoinDetailComponent implements OnInit {
 
 	renderCoinDetail(data: CoinsModel): void {
 		this.coin = data[0];
+		this.coinsService.setTitle(this.coin.name, this.coin.price_usd);
 		this.loading = false;
 	}
 
@@ -56,5 +59,7 @@ export class CoinDetailComponent implements OnInit {
 	getCoinsImageUrl(coin: string): string {
 		return this.coinsService.getCoinsImageUrl(coin);
 	}
+
+	
 
 }
